@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/grsmv/gowoopra.svg)](https://travis-ci.org/grsmv/gowoopra)
 [![Goreport](https://goreportcard.com/badge/github.com/grsmv/gowoopra)](https://goreportcard.com/report/github.com/grsmv/gowoopra)
+[![godoc badge](http://godoc.org/github.com/grsmv/gowoopra?status.png)](http://godoc.org/github.com/grsmv/gowoopra)
 
 Golang SDK for [Woopra](https://www.woopra.com) API based on  [API documentation](https://www.woopra.com/docs/developer/http-tracking-api/)
 
