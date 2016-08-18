@@ -8,9 +8,11 @@ import (
 )
 
 const (
+	// To track events in Woopra, send Http GET requests to:
 	TRACK_API_ENDPOINT    = "https://www.woopra.com/track/ce"
+
+	// Identify requests can be used to ID a visitor and/or add properties to that visitor. The endpoint is:
 	IDENTIFY_API_ENDPOINT = "https://www.woopra.com/track/identify"
-	NO_HOST_ERROR         = "Host should be specified. This is domain as registered in Woopra, it identifies which project environment to receive the tracking request"
 )
 
 // Tracker used for storing sharable settings
@@ -37,7 +39,10 @@ type Context struct {
 // NewTracker creates new instance of sharable Tracker struct
 func NewTracker(config map[string]string) (*Tracker, error) {
 	if len(config["host"]) == 0 {
-		return &Tracker{}, errors.New(NO_HOST_ERROR)
+		return &Tracker{}, errors.New(
+			"Host should be specified. This is domain as registered in Woopra, " +
+			"it identifies which project environment to receive the tracking request",
+		)
 	}
 	return &Tracker{Host: config["host"]}, nil
 }
@@ -57,7 +62,7 @@ func (t Tracker) Identify(person Person, args ...string) *Context {
 }
 
 // Push identify a user without any tracking event
-func (ctx *Context) Push() (*Context) {
+func (ctx *Context) Push() *Context {
 	ctx.performRequest(IDENTIFY_API_ENDPOINT)
 	return ctx
 }

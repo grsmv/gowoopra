@@ -51,8 +51,8 @@ func ExampleContext_Push() {
 	})
 
 	person := gowoopra.Person{
-		Name: "Miles Davis",
-		Email:"coltrane@johns.com",
+		Name:  "Miles Davis",
+		Email: "coltrane@johns.com",
 	}
 
 	// sending User-Agent HTTP header content as an optional argument
@@ -63,7 +63,7 @@ func ExampleContext_Push() {
 
 	// Tracking custom event in Woopra. Each event can has additional data
 	id.Track(
-		"login",           // event name
+		"login", // event name
 		map[string]string{ // custom data
 			"through": "mobile",
 			"when":    "yesterday",
