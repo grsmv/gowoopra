@@ -38,7 +38,7 @@ func ExampleTracker_Identify() {
 
 func ExampleContext_Push() {
 	// defining new reusable Tracker with custom settings
-	wt, _ := gowoopra.NewTracker(map[string]string{
+	wt, _ := NewTracker(map[string]string{
 
 		// `host` is domain as registered in Woopra, it identifies which
 		// project environment to receive the tracking request
@@ -47,16 +47,16 @@ func ExampleContext_Push() {
 		// In milliseconds, defaults to 30000 (equivalent to 30 seconds)
 		// after which the event will expire and the visit will be marked
 		// as offline.
-		"timeout": 30000,
+		"timeout": "30000",
 	})
 
-	person := gowoopra.Person{
+	person := Person{
 		Name:  "Miles Davis",
 		Email: "coltrane@johns.com",
 	}
 
 	// sending User-Agent HTTP header content as an optional argument
-	userAgent := r.UserAgent() // http.Request.UserAgent()
+	userAgent := "Mozilla/5.0 (iPad; U; CPU [...]" // http.Request.UserAgent()
 
 	// identifying current visitor in Woopra
 	id := wt.Identify(person, userAgent)
